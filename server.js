@@ -2,7 +2,7 @@ var express=require("express");
 var bodyParser=require("body-parser");
 var mongoose=require("mongoose");
 var path=require("path");
-mongoose.connect('mongodb://localhost/myapp');
+mongoose.connect('mongodb://localhost/miChat');
 var app=express();
 var server=require("http").createServer(app);
 var io=require("socket.io")(server);
