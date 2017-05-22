@@ -1,56 +1,61 @@
 <md-tab-group>
-  <md-tab label="Login">
-    <form [formGroup]="LoginForm" (ngSubmit)="Login(LoginForm.value)">
-      <div fxLayout="column" fxLayoutGap="10px" class="flex">
-        <md-input-container>
-          <input type="text" mdInput placeholder="Email/Username" formControlName="Username" />
-          <md-error>UserName is required</md-error>
-        </md-input-container>
+    <md-tab label="Login">
+        <form [formGroup]="LoginForm" (ngSubmit)="Login(LoginForm.value)">
+            <div fxLayout="column" fxLayoutGap="10px" class="flex">
+                <md-input-container>
+                    <input type="text" mdInput placeholder="Email/Username" formControlName="Username" />
+                    <md-error>UserName is required</md-error>
+                </md-input-container>
 
-        <md-input-container>
-          <input mdInput type="password" placeholder="Password" formControlName="Password" />
-          <md-error>Password is required</md-error>
-        </md-input-container>
-      </div>
-      <button md-raised-button color="primary" type="submit" align="end" [disabled]="!LoginForm.valid">Login</button>
-    </form>
-  </md-tab>
-  <md-tab label="Signup">
-    <form [formGroup]="SignupForm" (ngSubmit)="Signup(SignupForm.value)">
-      <div fxLayout="column">
+                <md-input-container>
+                    <input mdInput type="password" placeholder="Password" formControlName="Password" />
+                    <md-error>Password is required</md-error>
+                </md-input-container>
+            </div>
+            <button md-raised-button color="primary" type="submit" align="end" [disabled]="!LoginForm.valid">Login</button>
+        </form>
+    </md-tab>
+    <md-tab label="Signup">
+        <form [formGroup]="SignupForm" (ngSubmit)="Signup(SignupForm.value)">
+            <div fxLayout="column">
 
-        <md-input-container>
-          <input type="text" mdInput placeholder="Username" formControlName="Username" [(ngModel)]="username"/>
-          <md-error>UserName is required</md-error>
-        </md-input-container>
+                <md-input-container>
+                    <input type="text" mdInput placeholder="Username" formControlName="Username" />
+                    <md-error>UserName is required</md-error>
+                </md-input-container>
 
-        <md-input-container>
-          <input type="text" mdInput placeholder="First Name" formControlName="Firstname" />
-          <md-error>First Name is required</md-error>
-        </md-input-container>
-        <md-input-container>
-          <input type="text" mdInput placeholder="Last Name" formControlName="LastName" />
-          <md-error>Last Name is required</md-error>
-        </md-input-container>
+                <md-input-container>
+                    <input type="text" mdInput placeholder="First Name" formControlName="Firstname" />
+                    <md-error>First Name is required</md-error>
+                </md-input-container>
+                <md-input-container>
+                    <input type="text" mdInput placeholder="Last Name" formControlName="Lastname" />
+                    <md-error>Last Name is required</md-error>
+                </md-input-container>
 
-        <md-input-container>
-          <input type="text" mdInput placeholder="Email" formControlName="Email" />
-          <md-error>Email is required</md-error>
-        </md-input-container>
+                <md-input-container>
+                    <input type="text" mdInput placeholder="Email" formControlName="Email" />
+                    <md-error>Email is required</md-error>
+                </md-input-container>
 
-        <md-input-container>
-          <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" formControlName="Dob">
-          <button mdSuffix [mdDatepickerToggle]="picker"></button>
-        </md-input-container>
-        <md-datepicker #picker></md-datepicker>
+                <md-input-container>
+                    <input mdInput [mdDatepicker]="picker" placeholder="Choose a date" formControlName="Dob">
+                    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                </md-input-container>
+                <md-datepicker #picker></md-datepicker>
 
-        <md-input-container>
-          <input type="password" mdInput placeholder="Password" formControlName="Password" />
-          <md-error>Dob is required</md-error>
-        </md-input-container>
+                <md-input-container>
+                    <input type="password" mdInput placeholder="Password" formControlName="Password" />
+                    <md-error>Dob is required</md-error>
+                </md-input-container>
 
-      </div>
-      <button type="submit" md-raised-button color="accent" [disabled]="!SignupForm.valid">Signup</button>
-    </form>
-  </md-tab>
+                <img [src]="src" [hidden]="!src"><br>
+
+                <input md-raised-button type="file" imageUpload (imageSelected)="selected($event)" [resizeOptions]="resizeOptions" formControlName="pic" />
+
+
+            </div>
+            <button type="submit" md-raised-button color="accent" [disabled]="!SignupForm.valid">Signup</button>
+        </form>
+    </md-tab>
 </md-tab-group>

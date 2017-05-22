@@ -1,22 +1,38 @@
-var express=require("express");
-var bodyParser=require("body-parser");
-var mongoose=require("mongoose");
-var path=require("path");
+var express = require("express");
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var path = require("path");
 mongoose.connect('mongodb://localhost/miChat');
-var app=express();
-var server=require("http").createServer(app);
-var io=require("socket.io")(server);
-var users=require("./Routes/Users");
-var port=3000;
-app.use(express.static(path.join(__dirname,'public')));
-app.use(bodyParser.urlencoded({extended:true}));
+var app = express();
+var server = require("http").createServer(app);
+var io = require("socket.io")(server);
+var users = require("./Routes/Users");
+var port = 3000;
+var User = require("./Models/User");
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/users',users);
+app.use('/users', users);
 
-app.get('*',(req,res)=>{
-   res.sendFile(path.join(__dirname,'public/Index.html'));    
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/Index.html'));
 });
-app.listen(port,()=>{
-   console.log("App listening in Port  :"+port);
+
+
+io.on('connection', (socket) => {
+    console.log('User Connected');
+
+    socket.on("disconnected", () => {
+        console.log("user disconnected");
+    });
+
+    socket.on('Contact', () => {
+        User.find((err, users) => {
+            io.emit('AllUsers', { Contactlist: users });
+        });
+    });
+});
+app.listen(port, () => {
+    console.log("App listening in Port  :" + port);
 });

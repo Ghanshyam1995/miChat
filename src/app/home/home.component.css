@@ -1,0 +1,23 @@
+.fill {
+    flex: 1 1 auto;
+}
+
+md-sidenav-container,
+.my-content {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+md-toolbar {
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.02), 0 2px 2px rgba(0, 0, 0, 0.19);
+}
+
+md-sidenav {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.routerContent {
+    margin: 10px 10px;
+}

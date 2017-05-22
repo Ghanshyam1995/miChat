@@ -1,0 +1,14 @@
+<div fxLayout fxLayoutGap="10px" fxLayout.xs="column">
+    <div class="suggestion" *ngFor="let user of Users" flex="33%">
+        <md-card>
+            <img md-card-image src={{user.pic}} />
+            <md-card-content>
+                <p><strong>{{user.firstname}} {{user.lastname}}</strong></p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="center">
+                <button md-raised-button><md-icon>person_add</md-icon>Send Request</button>
+
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

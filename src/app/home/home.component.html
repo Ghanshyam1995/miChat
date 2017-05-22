@@ -1,0 +1,19 @@
+<md-sidenav-container fullscreen>
+
+    <md-sidenav #start mode="side">
+
+    </md-sidenav>
+
+    <md-toolbar color="primary">
+        <button md-icon-button (click)="start.toggle()"><md-icon>toc</md-icon></button>
+        <span class="fill"></span>
+        <button md-icon-button><md-icon>person</md-icon></button>
+    </md-toolbar>
+
+    <div class="routerContent">
+        <router-outlet>
+
+        </router-outlet>
+    </div>
+
+</md-sidenav-container>
