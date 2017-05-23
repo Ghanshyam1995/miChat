@@ -25,14 +25,22 @@ io.on('connection', (socket) => {
 
     socket.on("disconnected", () => {
         console.log("user disconnected");
+
     });
 
+    socket.on('Login', (Id) => {
+        User.findById(Id, (err, user) => {
+            io.emit('OnlineUsers', { newUser: user });
+        });
+    });
     socket.on('Contact', () => {
         User.find((err, users) => {
+            if (err) console.log(err);
             io.emit('AllUsers', { Contactlist: users });
         });
     });
 });
-app.listen(port, () => {
+
+server.listen(port, () => {
     console.log("App listening in Port  :" + port);
 });

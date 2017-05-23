@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var User = require('../Models/User');
+
 router.post('/Login', (req, res) => {
     var username = req.body.LoginValues.Username;
     var password = req.body.LoginValues.Password;
@@ -39,11 +40,6 @@ router.get("/Profile/:id", (req, res) => {
     });
 });
 
-router.get('/FriendSuggestion', (req, res) => {
-    User.find((err, users) => {
-        res.json(users);
-    });
-});
 
 
 module.exports = router;

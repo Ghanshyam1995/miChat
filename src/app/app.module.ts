@@ -9,12 +9,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoginComponent } from './login/login.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { AuthService } from "app/auth.service";
-import { FriendService } from "app/friend.service";
+
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FindFriendComponent } from './find-friend/find-friend.component';
+
 import { ImageUploadModule } from 'ng2-imageupload';
+import { RouteGuard } from "app/Route.guard";
 
 @NgModule({
   declarations: [
@@ -22,8 +23,8 @@ import { ImageUploadModule } from 'ng2-imageupload';
     LoginComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent,
-    FindFriendComponent
+    ProfileComponent
+    
   ],
   imports: [
     MaterialModule,MdNativeDateModule,
@@ -34,7 +35,7 @@ import { ImageUploadModule } from 'ng2-imageupload';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthService,FriendService],
+  providers: [AuthService,RouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,3 +21,9 @@ md-sidenav {
 .routerContent {
     margin: 10px 10px;
 }
+
+md-sidenav {
+    -webkit-box-shadow: 0 8px 6px 0px black;
+    -moz-box-shadow: 0 8px 6px 0px black;
+    box-shadow: 0 8px 6px 0px black;
+}

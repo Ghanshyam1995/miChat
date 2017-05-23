@@ -7,9 +7,16 @@
     <md-toolbar color="primary">
         <button md-icon-button (click)="start.toggle()"><md-icon>toc</md-icon></button>
         <span class="fill"></span>
-        <button md-icon-button><md-icon>person</md-icon></button>
+        <button md-icon-button><md-icon>bell {{request|| 0}}</md-icon></button>
+        <button md-icon-button [mdMenuTriggerFor]="menuRef"><md-icon>person</md-icon></button>
     </md-toolbar>
 
+
+    <md-menu #menuRef="mdMenu">
+        <button md-menu-item>
+             Profile
+        </button>
+    </md-menu>
     <div class="routerContent">
         <router-outlet>
 
