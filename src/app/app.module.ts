@@ -9,13 +9,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoginComponent } from './login/login.component';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { AuthService } from "app/auth.service";
-
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-
 import { ImageUploadModule } from 'ng2-imageupload';
-import { RouteGuard } from "app/Route.guard";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +33,7 @@ import { RouteGuard } from "app/Route.guard";
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthService,RouteGuard],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
