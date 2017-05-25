@@ -1,10 +1,17 @@
-<div style="position:fixed;width:200px;bottom:0;right:0;overflow-y: scroll" (click)="ToggleHeight()" [style.height.px]="friendsWindow">
-    <ul>
-        <li class="onlineHeading">
-            Friends {{totalUsers}}
-        </li>
-        <li *ngFor="let user of OnlineUsers">
-            <a href="">{{user.firstname}} {{user.lastname}}</a>
-        </li>
-    </ul>
-</div>
+<md-card style="position:fixed;bottom:0;right:0;background: black;color:white" fxLayout="column" fxLayoutGap="10px">
+    <header>
+        Total Friends Online : {{totalUsers}}
+    </header>
+    <div id="myOnlineFriends">
+        <div *ngFor="let user of OnlineUsers" [@animate] class="friendList">
+            <a fxLayout (click)="OpenChatBox(user)">
+                <div>
+                    <img src={{user.pic}} class="profilePic" />
+                </div>
+                <div style="padding-top:15px">
+                    <span> {{user.firstname}} {{user.lastname}}</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</md-card>

@@ -9,10 +9,13 @@ import {trigger,style,animate,transition,keyframes} from "@angular/animations";
   animations:[
          trigger('animate',[
               transition("*=>*",[
-                      animate('.5s ease-in',keyframes([
-                      style({'transform':'scale(0)'}),
-                      style({'transform':'scale(.5)'}),
-                      style({'transform':'scale(1)'})
+                      animate('1s ease-in',keyframes([
+                      style({'opacity':'0'}),
+                      style({'opacity':'.2'}),
+                      style({'opacity':'.4'}),
+                      style({'opacity':'.6'}),
+                      style({'opacity':'.8'}),
+                      style({'opacity':'1'})
                     ]))
               ]),
          ])
@@ -21,7 +24,7 @@ import {trigger,style,animate,transition,keyframes} from "@angular/animations";
 })
 
 export class DashboardComponent implements OnInit {
- OnlineUsers=[];
+ OnlineUsers=Array<any>();
  totalUsers:number;
  friendsWindow :number;
   constructor(private authService: AuthService) {
@@ -33,16 +36,20 @@ export class DashboardComponent implements OnInit {
         this.OnlineUsers=user;
           this.totalUsers=this.OnlineUsers.length;
       });
+
+      this.GetOnlineUser();
   }
   GetOnlineUser(){
-        this.authService.GetOnlineFriends().subscribe(user=>{
-       
+       this.authService.GetOnlineFriends().subscribe(user=>{
+           let index=(this.OnlineUsers).indexOf(user);
+           console.log(index);
            this.OnlineUsers.push(user);
            this.totalUsers=this.OnlineUsers.length;
        });
   }
-  ToggleHeight()
-  {
-    this.friendsWindow ==300 ? this.friendsWindow=50 :this.friendsWindow =300;
-  }
+ 
+ OpenChatBox(user :any)
+ {
+   alert(user);
+ }
 }

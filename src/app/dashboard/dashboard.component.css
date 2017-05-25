@@ -1,22 +1,10 @@
-.onlineHeading {
-    text-align: center;
-    font-weight: 700;
-    background-color: darkgray;
-}
-
-ul li:first {
-    height: 50px;
+.profilePic {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
 }
 
 a {
     text-decoration: none;
-}
-
-li {
-    display: block;
-    padding: 4px 8px;
-}
-
-ul {
-    list-style: none;
+    cursor: pointer;
 }
