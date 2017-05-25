@@ -3,6 +3,7 @@ import { Observable, Subject } from "rxjs";
 import * as io from "socket.io-client";
 import { Http, Headers } from "@angular/http";
 
+
 @Injectable()
 export class AuthService {
   userId :string;
@@ -21,14 +22,17 @@ export class AuthService {
         if(body)
         {   debugger;
             this.userId=user._id;
-            localStorage.setItem('token',body);
+             localStorage.setItem('token',body);
             this.socket.emit('Login',this.userId);
+            
         }
         return body;
      });
      
   }
-
+OnlineUsers(){
+   return this._http.get(`/users/OnlineUsers`).map(res=>res.json());
+}
   Signup(user)
   {
      let headers =new Headers();
@@ -43,7 +47,10 @@ export class AuthService {
    GetOnlineFriends()
    {
      let observable=new Observable((observer)=>{
-            this.socket.on("OnlineUsers",(user)=>{
+       debugger;
+            this.socket.on("NewOnlineUser",(user)=>{
+              debugger
+              console.log(user);
               observer.next(user.newUser);
             });
             return ()=>{

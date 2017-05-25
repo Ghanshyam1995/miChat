@@ -8,7 +8,8 @@ var userSchema = new Schema({
     firstname: { type: String },
     lastname: { type: String },
     dob: { type: String },
-    pic: { type: String }
+    pic: { type: String },
+    online: { type: Boolean }
 });
 
 module.exports = mongoose.model('User', userSchema);

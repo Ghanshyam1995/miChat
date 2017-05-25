@@ -30,7 +30,7 @@ io.on('connection', (socket) => {
 
     socket.on('Login', (Id) => {
         User.findById(Id, (err, user) => {
-            io.emit('OnlineUsers', { newUser: user });
+            io.emit('NewOnlineUser', { newUser: user });
         });
     });
     socket.on('Contact', () => {

@@ -1,0 +1,22 @@
+.onlineHeading {
+    text-align: center;
+    font-weight: 700;
+    background-color: darkgray;
+}
+
+ul li:first {
+    height: 50px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    display: block;
+    padding: 4px 8px;
+}
+
+ul {
+    list-style: none;
+}

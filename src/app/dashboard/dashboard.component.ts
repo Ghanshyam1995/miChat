@@ -17,19 +17,32 @@ import {trigger,style,animate,transition,keyframes} from "@angular/animations";
               ]),
          ])
   ]
+
 })
+
 export class DashboardComponent implements OnInit {
  OnlineUsers=[];
-
-  constructor(private authService: AuthService) { }
+ totalUsers:number;
+ friendsWindow :number;
+  constructor(private authService: AuthService) {
+    this.friendsWindow=300;
+   }
 
   ngOnInit() {
-     this.GetOnlineUser();
+      this.authService.OnlineUsers().subscribe(user=>{
+        this.OnlineUsers=user;
+          this.totalUsers=this.OnlineUsers.length;
+      });
   }
   GetOnlineUser(){
-    
-       this.authService.GetOnlineFriends().subscribe(user=>{
+        this.authService.GetOnlineFriends().subscribe(user=>{
+       
            this.OnlineUsers.push(user);
+           this.totalUsers=this.OnlineUsers.length;
        });
+  }
+  ToggleHeight()
+  {
+    this.friendsWindow ==300 ? this.friendsWindow=50 :this.friendsWindow =300;
   }
 }

@@ -13,6 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ImageUploadModule } from 'ng2-imageupload';
+import { RouteGuard } from "app/Auth.Guard";
+
+
+
 
 
 @NgModule({
@@ -22,6 +26,7 @@ import { ImageUploadModule } from 'ng2-imageupload';
     HomeComponent,
     DashboardComponent,
     ProfileComponent
+    
     
   ],
   imports: [
@@ -33,7 +38,7 @@ import { ImageUploadModule } from 'ng2-imageupload';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,RouteGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
